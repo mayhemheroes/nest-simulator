@@ -1,7 +1,7 @@
 FROM --platform=linux/amd64 ubuntu:22.04
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake python-is-python3 libgsl-dev \ libltdl-dev \ libncurses-dev \ libreadline-dev \ python3-all-dev \ python3-numpy \ python3-scipy \ python3-matplotlib \ python3-nose \ python3-junitparser \ python3-mpi4py \ openmpi-bin \ libopenmpi-dev python3-pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake python-is-python3 libgsl-dev  libltdl-dev  libncurses-dev  libreadline-dev  python3-all-dev  python3-numpy  python3-scipy  python3-matplotlib  python3-nose  python3-junitparser  python3-mpi4py  openmpi-bin  libopenmpi-dev python3-pip
 RUN pip3 install cython
 
 COPY . /repo
