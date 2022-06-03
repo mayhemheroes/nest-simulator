@@ -1,0 +1,7 @@
+project: nest-simulator
+target: nest
+testsuite: null
+
+cmds:
+  - cmd: /repo/build/bin/nest /test.sli
+    filepath: /test.sli
