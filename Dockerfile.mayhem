@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM --platform=linux/amd64 ubuntu:22.04 as builder
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y build-essential cmake python-is-python3 libgsl-dev  libltdl-dev  libncurses-dev  libreadline-dev  python3-all-dev  python3-numpy  python3-scipy  python3-matplotlib  python3-nose  python3-junitparser  python3-mpi4py  openmpi-bin  libopenmpi-dev python3-pip
@@ -9,3 +9,12 @@ WORKDIR /repo/build
 RUN cmake .. -DCMAKE_INSTALL_PREFIX:PATH=. -Dwith-python=OFF
 RUN make -j8
 RUN make install
+
+RUN mkdir -p /deps
+RUN ldd /repo/build/bin/nest | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % sh -c 'cp % /deps;'
+
+FROM ubuntu:22.04 as package
+
+COPY --from=builder /deps /deps
+COPY --from=builder /repo/build/bin/nest /repo/build/bin/nest
+ENV LD_LIBRARY_PATH=/deps
