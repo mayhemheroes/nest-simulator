@@ -16,5 +16,5 @@ RUN ldd /repo/build/bin/nest | tr -s '[:blank:]' '\n' | grep '^/' | xargs -I % s
 FROM ubuntu:22.04 as package
 
 COPY --from=builder /deps /deps
-COPY --from=builder /repo/build/bin/nest /repo/build/bin/nest
+COPY --from=builder /repo/build /repo/build
 ENV LD_LIBRARY_PATH=/deps
