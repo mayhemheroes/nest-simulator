@@ -3,5 +3,4 @@ target: nest
 testsuite: null
 
 cmds:
-  - cmd: /repo/build/bin/nest /test.sli
-    filepath: /test.sli
+  - cmd: /install/bin/nest @@
