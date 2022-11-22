@@ -1,0 +1,6 @@
+project: nest-simulator
+target: ends_with
+testsuite: null
+
+cmds:
+  - cmd: /fuzz_ends_with
