@@ -4,4 +4,3 @@ testsuite: null
 
 cmds:
   - cmd: /install/bin/nest @@
-    filepath: /test.sli
